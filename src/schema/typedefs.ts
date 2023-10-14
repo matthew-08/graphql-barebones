@@ -2,22 +2,22 @@ import { gql } from 'apollo-server';
 
 export const typeDefs = gql`
   type Artist {
-    id: Id!
+    id: ID!
     name: String!
     genre: String!
   }
 
   type Album {
-    id: Id!
+    id: ID!
     title: String!
     genre: String!
     artist: Artist
   }
 
-  type ArtistQueryFilter {
-    id: [Id!]!
-    genre: [String]!
-    artist: [String]!
+  input ArtistQueryFilter {
+    id: [ID!]
+    genre: [String!]
+    artist: [String!]
   }
 
   input ArtistQueryInput {
@@ -25,6 +25,6 @@ export const typeDefs = gql`
   }
 
   type Query {
-    artist(input: ArtistQueryInput): Artist
+    artists(input: ArtistQueryInput): [Artist]
   }
 `;
